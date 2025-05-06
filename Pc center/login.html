@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - PC Center</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('back1.jpg'); /* Background image */
+            background-size: cover; /* Cover the entire screen */
+            background-position: center; /* Center the background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.8); /* Slight opacity to make the background visible */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-box h2 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .login-box input[type="text"],
+            .login-box input[type="password"] {
+                width: 100%;
+                padding: 12px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .login-box button {
+                width: 100%;
+                padding: 12px;
+                background-color: #1e1e2f;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .login-box button:hover {
+                    background-color: #333;
+                }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Login to PC Center</h2>
+        <input type="text" id="username" placeholder="Username" onkeydown="checkEnter(event)" />
+        <input type="password" id="password" placeholder="Password" onkeydown="checkEnter(event)" />
+        <button onclick="login()">Login</button>
+        <div class="error" id="error-message"></div>
+    </div>
+
+    <script>
+        function login() {
+            const users = {
+                sameer: "sameer",
+                hashir: "hashir",
+                noman: "noman"
+            };
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorDiv = document.getElementById("error-message");
+
+            if (users[username] === password) {
+                window.location.href = "home.html"; // Change if your home page is named differently
+            } else {
+                errorDiv.textContent = "Invalid username or password.";
+            }
+        }
+
+        // Function to check for Enter key press
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                login(); // Call login() function when Enter key is pressed
+            }
+        }
+    </script>
+
+</body>
+</html>
